@@ -12,12 +12,13 @@ class channelChose extends Component {
     let cha1 = document.getElementById("ch1");
     let btn1 = document.getElementById("btn1");
 
-    if(btn1 == true){
-        console.log('hello');
-    }else{
-        console.log('no');
-    }
-    
+    let sPlay = cha1.play();
+       
+  }
+
+  channelStop1(){
+    let cha1 = document.getElementById("ch1");
+    let sPause = cha1.pause();
   }
 
   // http://listento.ardanradio.com:1059/stream/1/
@@ -25,8 +26,11 @@ class channelChose extends Component {
   render() {
     return (
       <div>
-        <Button className="btn1" className="mt-2" onClick={this.channel1}>
+        <Button id="btn1" className="mt-2" onClick={this.channel1}>
           OZ Channel
+        </Button>
+        <Button id="bts1" className="mt-2" onClick={this.channelStop1}>
+          OZ STOP
         </Button>
         <audio id="ch1" contextMenu>
             <source src="http://listento.ardanradio.com:1059/stream/1/" type="audio/ogg" />
