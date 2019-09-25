@@ -21,6 +21,7 @@ class header extends Component {
                   type="search"
                   placeholder="Search Here..."
                 />
+                
               </div>
             </Col>
           </Row>

@@ -9,7 +9,8 @@ function App() {
   return (
     <div className="bodyH" >
       <div>
-        <Header /><br />
+        <Header />
+        <br />
         <BodyOne />
       </div>
     </div>

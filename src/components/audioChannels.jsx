@@ -11,6 +11,12 @@ class audioChannels extends Component {
           type="audio/ogg"
           contextMenu
         />
+        <audio
+          id="ch2"
+          src="http://202.137.4.147:8000/;"
+          type="audio/ogg"
+          contextMenu
+        />
       </div>
     );
   }
