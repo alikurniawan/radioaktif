@@ -1,9 +1,24 @@
 import React, { Component } from "react";
 import { Row, Col, Container } from "reactstrap";
 import { Table, Button } from "semantic-ui-react";
+import AudioChannels from "./audioChannels";
 
 class bodyOne extends Component {
   state = {};
+
+    constructor(props){
+        super(props);
+
+        this.channel1 = this.channel1.bind(this);
+
+    }
+
+    channel1(){
+        let ch1 = document.getElementById("ch1");
+
+        ch1.play();
+    }
+
   render() {
     return (
       <div>
@@ -23,7 +38,8 @@ class bodyOne extends Component {
                   <Table.Row>
                     <Table.Cell>Pranbors</Table.Cell>
                     <Table.Cell>200</Table.Cell>
-                    <Table.Cell><Button>Play</Button></Table.Cell>
+                    <Table.Cell><Button onClick={this.channel1}>Play</Button></Table.Cell>
+                    <AudioChannels />
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>Kisi FM</Table.Cell>

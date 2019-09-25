@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
-import Channels from './channels';
 
 class channelChose extends Component {
 
@@ -49,10 +48,6 @@ class channelChose extends Component {
         <Button id="btn" value="0" className="mt-2" onClick={this.channelStop}>
           Stop
         </Button>
-
-        <Channels 
-          nama="Ali"
-        />
 
         <audio id="ch1" contextMenu>
           <source

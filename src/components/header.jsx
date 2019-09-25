@@ -15,7 +15,13 @@ class header extends Component {
             </Col>
             <Col></Col>
             <Col>
-              <Input className="mt-2" type="search" placeholder="Search Here..." />
+              <div className="sm-2">
+                <Input
+                  className="mt-2"
+                  type="search"
+                  placeholder="Search Here..."
+                />
+              </div>
             </Col>
           </Row>
         </Container>
