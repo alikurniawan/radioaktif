@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Container } from "reactstrap";
-import { Table } from "semantic-ui-react";
+import { Table, Button } from "semantic-ui-react";
 
 class bodyOne extends Component {
   state = {};
@@ -13,22 +13,22 @@ class bodyOne extends Component {
               <Table className="mt-5" color="yellow" inverted>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>Food</Table.HeaderCell>
-                    <Table.HeaderCell>Calories</Table.HeaderCell>
-                    <Table.HeaderCell>Protein</Table.HeaderCell>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Freq</Table.HeaderCell>
+                    <Table.HeaderCell>Play</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
                   <Table.Row>
-                    <Table.Cell>Apples</Table.Cell>
+                    <Table.Cell>Pranbors</Table.Cell>
                     <Table.Cell>200</Table.Cell>
-                    <Table.Cell>0g</Table.Cell>
+                    <Table.Cell><Button>Play</Button></Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.Cell>Orange</Table.Cell>
+                    <Table.Cell>Kisi FM</Table.Cell>
                     <Table.Cell>310</Table.Cell>
-                    <Table.Cell>0g</Table.Cell>
+                    <Table.Cell><Button>Play</Button></Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>
