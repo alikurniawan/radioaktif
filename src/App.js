@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./components/header";
-import ChannelChose from "./components/channelChose";
 import "./css/homex.css";
 import BodyOne from './components/bodyOne';
 import "./App.css";
