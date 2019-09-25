@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import {Card, CardHeader} from 'reactstrap';
 
 class channels extends Component {
     state = {  }
     render() { 
         return ( 
             <div>
-                <div>{this.props.nama}</div>
+                <Card>
+                    <CardHeader><div>{this.props.nama}</div></CardHeader>
+                </Card>
+                
             </div>
          );
     }
