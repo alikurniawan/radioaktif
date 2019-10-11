@@ -5,13 +5,12 @@ import LogoRadio from "../images/radioaktif.png";
 import "../dbase/fmChannels.json";
 
 class header extends Component {
-  
-  constructor(){
+  constructor() {
     super();
 
     this.changeHandler = this.changeHandler.bind(this);
   }
-  
+
   state = {
     dataK: ""
   };
@@ -22,18 +21,21 @@ class header extends Component {
     });
   };
 
-  changeHandler = (event) => {
-
-    const {value} = event.target
+  changeHandler = event => {
+    const { value } = event.target;
 
     this.setState({
       dataK: value
-    })
+    });
   };
 
-  render() {
+  componentDidMount(){
+    console.log("Mount");
+  }
 
-    const {dataK} = this.state;
+  
+  render() {
+    const { dataK } = this.state;
 
     return (
       <div>
@@ -45,7 +47,7 @@ class header extends Component {
             <Col></Col>
             <Col>
               <div className="sm-2">
-                <Input 
+                <Input
                   className="mt-2"
                   value={dataK}
                   onChange={this.changeHandler}
