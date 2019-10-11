@@ -5,13 +5,23 @@ import AudioChannels from "./audioChannels";
 
 class bodyOne extends Component {
   state = {
+<<<<<<< HEAD
     dbaseChannels : ["Ali", "Damam"]
       
   };
+=======
+    jenis: ["dangdut", "Jazz", "Keroncong"]
+  }
+
+  
+    
+  
+>>>>>>> 6900e5890de35518d0f3086e8a809854d545a64d
 
   constructor(){
     super();
 
+<<<<<<< HEAD
     this.showListed = this.showListed.bind(this);
   }
 
@@ -20,10 +30,33 @@ class bodyOne extends Component {
   }
 
  
+=======
+    
+    this.channelStop = this.channelStop.bind(this);    
+    this.showTableListed = this.showTableListed.bind(this);
+  }
+
+  channelStop() {
+    
+  }
+
+  showTableListed(){
+    // let takeTable = document.getElementById("tblMe");
+    let b = this.state.jenis[0]
+
+    console.log(b)
+    
+  }
+>>>>>>> 6900e5890de35518d0f3086e8a809854d545a64d
 
   
   render() {
     
+<<<<<<< HEAD
+=======
+    
+
+>>>>>>> 6900e5890de35518d0f3086e8a809854d545a64d
     return (
       <div>
         <AudioChannels />
@@ -60,8 +93,22 @@ class bodyOne extends Component {
                         Play
                       </Button>
                       <Button onClick={this.channelStop}>Stop</Button>
+                      {/* <Button>{this.state.jenis.map((todo, index) => `<Button>${todo}</Button>`)}</Button> */}
                     </Table.Cell>
                   </Table.Row>
+<<<<<<< HEAD
+=======
+
+                  {
+                   
+                    
+                    this.state.jenis.map((todo, index) => `
+                    
+                    ${todo}
+                  
+                  `)}
+
+>>>>>>> 6900e5890de35518d0f3086e8a809854d545a64d
                   {/* <Table.Row>
                     <Table.Cell>Elshinta FM</Table.Cell>
                     <Table.Cell>310</Table.Cell>
