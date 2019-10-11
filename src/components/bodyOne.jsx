@@ -5,55 +5,25 @@ import AudioChannels from "./audioChannels";
 
 class bodyOne extends Component {
   state = {
-    btnClick: {
-      value: "0",
-      btnId: "",
-      useMe: document.getElementById("ch1")
-    }
-
-
+    dbaseChannels : ["Ali", "Damam"]
+      
   };
 
-  constructor(props) {
-    super(props);
+  constructor(){
+    super();
 
-    this.channel1 = this.channel1.bind(this);
-    this.channelStop = this.channelStop.bind(this);    
+    this.showListed = this.showListed.bind(this);
   }
 
-  channelStop() {
-    let ch1 = document.getElementById("ch1");
-    let ch2 = document.getElementById("ch2");
-    let stopAll = [ch1, ch2];
-
-    stopAll[0].pause();
-  }
-  channel1() {
-    let ch1 = document.getElementById("ch1");
-    const btn1 = document.getElementById("btn1");
-
-    this.setState({
-      btnClick: {
-        value: btn1.value,
-        btnId: btn1.id
-      }
-    });
+  showListed(){
+    console.log("Mantap")
   }
 
+ 
+
+  
   render() {
-    const { btnClick } = this.state;
-    console.log(btnClick);
-
-    if ((btnClick.id = "btn1") && (btnClick.value == true)) {
-      console.log('OK');
-      this.ch1 = document.getElementById("ch1");
-      this.ch1.play();
-      
-    } else {
-      console.log('empty');
-      
-    }
-
+    
     return (
       <div>
         <AudioChannels />
@@ -83,22 +53,25 @@ class bodyOne extends Component {
 
                 <Table.Body>
                   <Table.Row>
-                    <Table.Cell>Pranbors</Table.Cell>
+                    <Table.Cell>{this.showListed}</Table.Cell>
                     <Table.Cell>200</Table.Cell>
                     <Table.Cell>
-                      <Button id="btn1" value="1" onClick={this.channel1}>Play</Button>
+                      <Button id="btn1" value="1" onClick={this.channel1}>
+                        Play
+                      </Button>
                       <Button onClick={this.channelStop}>Stop</Button>
                     </Table.Cell>
-
                   </Table.Row>
-                  <Table.Row>
+                  {/* <Table.Row>
                     <Table.Cell>Elshinta FM</Table.Cell>
                     <Table.Cell>310</Table.Cell>
                     <Table.Cell>
-                      <Button id="btn2" value="0" onClick={this.channel1}>Play2</Button>
+                      <Button id="btn2" value="1" onClick={this.channel1}>
+                        Play2
+                      </Button>
                       <Button onClick={this.channelStop}>Stop</Button>
                     </Table.Cell>
-                  </Table.Row>
+                  </Table.Row> */}
                 </Table.Body>
               </Table>
             </Col>
