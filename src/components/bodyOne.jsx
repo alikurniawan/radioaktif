@@ -7,7 +7,21 @@ class bodyOne extends Component {
   constructor(){
     super();
 
-    this.state = [1,2,3];
+    this.state = {channelsData : []} ;
+
+    this.cariChannel = this.cariChannel.bind(this);
+  }
+
+  componentDidMount(){
+    fetch("./channels.json")
+    .then(res => Response.json())
+    .then((data) => {
+      this.setState({channelsData: data})
+    })
+  }
+
+  cariChannel = () => {
+    console.log('Handrel')
   }
 
   render() {
@@ -20,7 +34,7 @@ class bodyOne extends Component {
               <Col className="sm-4 mt-2">Ver 1.0</Col>
               <Col className="sm-4"></Col>
               <Col className="sm-4">
-                <Input type="text" placeholder="Search Here...." value={this.state} />
+                <Input type="text" placeholder="Search Here...." value={this.state} onChange={this.cariChannel} />
               </Col>
             </Row>
 
