@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col, Container, Input } from "reactstrap";
 import { Table, Button } from "semantic-ui-react";
 import AudioChannels from "./audioChannels";
 
 class bodyOne extends Component {
-  state = {};
+  constructor(){
+    super();
+
+    this.state = [1,2,3];
+  }
 
   render() {
     return (
@@ -13,7 +17,11 @@ class bodyOne extends Component {
         <Container>
           <div className="mt-5">
             <Row>
-              <Col>S</Col>
+              <Col className="sm-4 mt-2">Ver 1.0</Col>
+              <Col className="sm-4"></Col>
+              <Col className="sm-4">
+                <Input type="text" placeholder="Search Here...." value={this.state} />
+              </Col>
             </Row>
 
             <Row>
