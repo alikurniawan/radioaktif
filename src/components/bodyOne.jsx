@@ -4,25 +4,32 @@ import { Table, Button } from "semantic-ui-react";
 import AudioChannels from "./audioChannels";
 
 class bodyOne extends Component {
-  constructor(){
+  constructor() {
     super();
 
-    this.state = {channelsData : []} ;
+    this.state = { channelsData: [] };
 
     this.cariChannel = this.cariChannel.bind(this);
   }
 
-  componentDidMount(){
-    fetch("./channels.json")
-    .then(res => Response.json())
-    .then((data) => {
-      this.setState({channelsData: data})
-    })
+  componentDidMount() {
+    fetch("https://api.github.com/users/alikurniawan/followers")
+      .then(res => res.json())
+      .then(datax => ((datax, index) => {
+        this.setState({
+          cariChannel : datax
+          
+        })
+      }
+        
+      ));
+      console.log(this.state.channelsData)
+      
   }
 
   cariChannel = () => {
-    console.log('Handrel')
-  }
+    // console.log(this.state.channelsData);
+  };
 
   render() {
     return (
@@ -34,7 +41,12 @@ class bodyOne extends Component {
               <Col className="sm-4 mt-2">Ver 1.0</Col>
               <Col className="sm-4"></Col>
               <Col className="sm-4">
-                <Input type="text" placeholder="Search Here...." value={this.state} onChange={this.cariChannel} />
+                <Input
+                  type="text"
+                  placeholder="Search Here...."
+                  value={this.state}
+                  onChange={this.cariChannel}
+                />
               </Col>
             </Row>
 
@@ -61,6 +73,7 @@ class bodyOne extends Component {
                         {/* <Button>{this.state.jenis.map((todo, index) => `<Button>${todo}</Button>`)}</Button> */}
                       </Table.Cell>
                     </Table.Row>
+
                     {/* <Table.Row>
                     <Table.Cell>Elshinta FM</Table.Cell>
                     <Table.Cell>310</Table.Cell>
