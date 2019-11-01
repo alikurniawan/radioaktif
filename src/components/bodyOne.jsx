@@ -1,40 +1,37 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
 import { Table, Button } from "semantic-ui-react";
-import AudioChannels from "./audioChannels";
+import AudioAll from "./audioChannels";
 
 class bodyOne extends Component {
+  
+
   constructor() {
     super();
 
-    this.state = { channelsData: [] };
+    this.state = {
+      channelsRadio: ["http://listento.ardanradio.com:1059/stream/1/", "http://202.137.4.147:8000/;"]
+    };
 
     this.cariChannel = this.cariChannel.bind(this);
   }
 
   componentDidMount() {
-    fetch("https://api.github.com/users/alikurniawan/followers")
-      .then(res => res.json())
-      .then(datax => ((datax, index) => {
-        this.setState({
-          cariChannel : datax
           
-        })
-      }
-        
-      ));
-      console.log(this.state.channelsData)
-      
   }
 
   cariChannel = () => {
-    // console.log(this.state.channelsData);
+    let channels1 = this.state.channelsRadio[0];
+    let audioAllSet = document.getElementById("audioAll");
+    let channelsRadioSetIn = audioAllSet.setAttribute('src', channels1);
+
+    audioAllSet.play();
   };
 
   render() {
     return (
       <div>
-        <AudioChannels />
+        <AudioAll />
         <Container>
           <div className="mt-5">
             <Row>
@@ -66,7 +63,7 @@ class bodyOne extends Component {
                       <Table.Cell>{this.showListed}</Table.Cell>
                       <Table.Cell>200</Table.Cell>
                       <Table.Cell>
-                        <Button id="btn1" value="1" onClick={this.channel1}>
+                        <Button id="btn1" value="1" onClick={this.cariChannel}>
                           Play
                         </Button>
                         <Button onClick={this.channelStop}>Stop</Button>

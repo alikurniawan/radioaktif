@@ -6,14 +6,7 @@ class audioChannels extends Component {
     return (
       <div>
         <audio
-          id="ch1"
-          src="http://listento.ardanradio.com:1059/stream/1/"
-          type="audio/ogg"
-          contextMenu
-        />
-        <audio
-          id="ch2"
-          src="http://202.137.4.147:8000/;"
+          id="audioAll"
           type="audio/ogg"
           contextMenu
         />
