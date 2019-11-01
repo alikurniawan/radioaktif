@@ -13,9 +13,15 @@ class bodyOne extends Component {
     this.state = {
       channelsRadio: [
         {
+          "name" : "Elshinta",
           "src" : "http://listento.ardanradio.com:1059/stream/1/"
         },
         {
+          "name" : "Roja",
+          "src" : "http://202.137.4.147:8000/;"
+        },
+        {
+          "name" : "Bahagia Radio",
           "src" : "http://202.137.4.147:8000/;"
         }
       ]
@@ -60,13 +66,7 @@ class bodyOne extends Component {
     return (
       <div>
         <AudioAll />
-        {
-          this.state.channelsRadio.map(
-            (item, index) => (
-              <li>{item.src}</li>
-            )
-          )
-        }
+        
         <Container>
           <div className="mt-5">
             <Row>
@@ -94,17 +94,24 @@ class bodyOne extends Component {
                   </Table.Header>
 
                   <Table.Body>
-                    <Table.Row id="tableListsRow">
-                      <Table.Cell>{this.showListed}</Table.Cell>
+                    
+
+{
+  this.state.channelsRadio.map(
+    (item, key) => (
+      <Table.Row>
+                      <Table.Cell>{item.name}</Table.Cell>
                       <Table.Cell>200</Table.Cell>
                       <Table.Cell>
                         <Button id="btn1" value="1" onClick={this.cariChannel}>
                           Play
                         </Button>
                         <Button onClick={this.pushButtonStopPlay}>Stop</Button>
-                        {/* <Button>{this.state.jenis.map((todo, index) => `<Button>${todo}</Button>`)}</Button> */}
                       </Table.Cell>
                     </Table.Row>
+    )
+  )
+}
 
                     {/* <Table.Row>
                     <Table.Cell>Elshinta FM</Table.Cell>
