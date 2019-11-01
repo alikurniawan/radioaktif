@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
 import { Table, Button } from "semantic-ui-react";
 import AudioAll from "./audioChannels";
+import { tsConstructorType } from "@babel/types";
 
 class bodyOne extends Component {
   
@@ -14,10 +15,17 @@ class bodyOne extends Component {
     };
 
     this.cariChannel = this.cariChannel.bind(this);
+    this.pushButtonStopPlay = this.pushButtonStopPlay.bind(this);
   }
 
   componentDidMount() {
-          
+    let tableListsRow = document.getElementById("tableListsRow");
+
+    
+  }
+
+  componentWillMount(){
+    console.log("WillAkan");
   }
 
   cariChannel = () => {
@@ -25,8 +33,17 @@ class bodyOne extends Component {
     let audioAllSet = document.getElementById("audioAll");
     let channelsRadioSetIn = audioAllSet.setAttribute('src', channels1);
 
-    audioAllSet.play();
+    let playNow = audioAllSet.play();
   };
+
+  pushButtonStopPlay = () => {
+    console.log(this.cariChannel)
+    
+    let ster = document.getElementById("audioAll");
+    ster.pause();
+  }
+      
+  
 
   render() {
     return (
@@ -59,14 +76,14 @@ class bodyOne extends Component {
                   </Table.Header>
 
                   <Table.Body>
-                    <Table.Row>
+                    <Table.Row id="tableListsRow">
                       <Table.Cell>{this.showListed}</Table.Cell>
                       <Table.Cell>200</Table.Cell>
                       <Table.Cell>
                         <Button id="btn1" value="1" onClick={this.cariChannel}>
                           Play
                         </Button>
-                        <Button onClick={this.channelStop}>Stop</Button>
+                        <Button onClick={this.pushButtonStopPlay}>Stop</Button>
                         {/* <Button>{this.state.jenis.map((todo, index) => `<Button>${todo}</Button>`)}</Button> */}
                       </Table.Cell>
                     </Table.Row>
