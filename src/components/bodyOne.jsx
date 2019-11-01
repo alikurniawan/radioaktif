@@ -11,7 +11,14 @@ class bodyOne extends Component {
     super();
 
     this.state = {
-      channelsRadio: ["http://listento.ardanradio.com:1059/stream/1/", "http://202.137.4.147:8000/;"]
+      channelsRadio: [
+        {
+          "src" : "http://listento.ardanradio.com:1059/stream/1/"
+        },
+        {
+          "src" : "http://202.137.4.147:8000/;"
+        }
+      ]
     };
 
     this.cariChannel = this.cariChannel.bind(this);
@@ -25,7 +32,10 @@ class bodyOne extends Component {
   }
 
   componentWillMount(){
-    console.log("WillAkan");
+    let dataListing = [];
+    const items = this.state.channelsRadio.map(
+      (item, key) => <li key={item.id}>{item.name}</li>
+    );
   }
 
   cariChannel = () => {
@@ -36,9 +46,7 @@ class bodyOne extends Component {
     let playNow = audioAllSet.play();
   };
 
-  pushButtonStopPlay = () => {
-    console.log(this.cariChannel)
-    
+  pushButtonStopPlay = () => {    
     let ster = document.getElementById("audioAll");
     ster.pause();
   }
@@ -46,9 +54,19 @@ class bodyOne extends Component {
   
 
   render() {
+
+    
+    
     return (
       <div>
         <AudioAll />
+        {
+          this.state.channelsRadio.map(
+            (item, index) => (
+              <li>{item.src}</li>
+            )
+          )
+        }
         <Container>
           <div className="mt-5">
             <Row>
