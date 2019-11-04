@@ -24,9 +24,9 @@ class bodyOne extends Component {
         },
         {
           "id": 2,
-          "name": "Bahagia Radio",
-          "freqCha": "300",
-          "src": "http://202.139.4.147:8000/;"
+          "name": "Fajri Radio",
+          "freqCha": "99,3 FM",
+          "src": "http://coloid.fajrifm.com:9930/;"
         }
       ]
     };
@@ -48,37 +48,49 @@ class bodyOne extends Component {
 
   playChannel = (event) => {
 
-    const catchButton = document.getElementsByName("btnToCatch");
+   
     const catchAudio = document.getElementById("audio-element");
+    const catchAudio2 = document.getElementById("audio-element2");
+
 
     const catchButtonOnlyId = event.target.getAttribute("id");
 
-    catchAudio.play();
+    // catchAudio.pause();
+    
 
-    // if(catchButtonOnlyId == 0){
-    //   catchAudio.play();
-    // }else if (catchButtonOnlyId == 1){
-    //   console.log("say 1")
-    // }else if(catchButtonOnlyId == 2){
-    //   console.log("say 2");
-    // }else{
-    //   console.log("Music Off");
-    // }
+    if(catchButtonOnlyId == 0){
+      catchAudio2.pause();
+      catchAudio.play();
+    }else if (catchButtonOnlyId == 1){
+      catchAudio.pause();
+      catchAudio2.play();
+    }else if(catchButtonOnlyId == 2){
+      console.log("say 2");
+    }else{
+      console.log("Music Off");
+    }
 
-    console.log("Hear You")
+   
 
   };
 
-  pushButtonStopPlay = () => {
+  pushButtonStopPlay = (event) => {
+   
+    const testTake = document.getElementsByClassName("audio1")[0];
 
+    console.log(testTake)
+    
   }
 
   render() {
 
     return (
       <div>
-        <audio id="audio-element">
+        <audio id="audio-element" className="audio1">
           <source src="http://listento.ardanradio.com:1059/stream/1/"></source>
+        </audio>
+        <audio id="audio-element2">
+          <source src="http://coloid.fajrifm.com:9930/;"></source>
         </audio>
         <Container>
           <div className="mt-5">
@@ -111,16 +123,16 @@ class bodyOne extends Component {
                     {
                       this.state.channelsRadio.map(
                         (item, key) => (
+
                           <Table.Row className="tableHere">
 
                             <Table.Cell>{item.name}</Table.Cell>
                             <Table.Cell>{item.freqCha}</Table.Cell>
                             <Table.Cell>
-
                               <Button id={item.id} onClick={this.playChannel} name="btnToCatch">
                                 Play
                               </Button>
-                              <Button onClick={this.pushButtonStopPlay}>Stop</Button>
+                              <Button id="stopButton" onClick={this.pushButtonStopPlay}>Stop</Button>
                             </Table.Cell>
                           </Table.Row>
                         )
