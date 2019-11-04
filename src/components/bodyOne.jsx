@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
 import { Table, Button } from "semantic-ui-react";
-import AudioAll from "./audioChannels";
-import { tsConstructorType } from "@babel/types";
 
 class bodyOne extends Component {
-  
+
 
   constructor() {
     super();
@@ -13,60 +11,75 @@ class bodyOne extends Component {
     this.state = {
       channelsRadio: [
         {
-          "name" : "Elshinta",
-          "src" : "http://listento.ardanradio.com:1059/stream/1/"
+          "id": 0,
+          "name": "Elshinta",
+          "freqCha": "100",
+          "src": "http://listento.ardanradio.com:1059/stream/1/"
         },
         {
-          "name" : "Roja",
-          "src" : "http://202.137.4.147:8000/;"
+          "id": 1,
+          "name": "Roja",
+          "freqCha": "200",
+          "src": "http://202.137.4.147:8000/;"
         },
         {
-          "name" : "Bahagia Radio",
-          "src" : "http://202.137.4.147:8000/;"
+          "id": 2,
+          "name": "Bahagia Radio",
+          "freqCha": "300",
+          "src": "http://202.139.4.147:8000/;"
         }
       ]
     };
 
-    this.cariChannel = this.cariChannel.bind(this);
+    this.playChannel = this.playChannel.bind(this);
     this.pushButtonStopPlay = this.pushButtonStopPlay.bind(this);
+    this.cariChannel = this.cariChannel.bind(this);
   }
 
-  componentDidMount() {
-    let tableListsRow = document.getElementById("tableListsRow");
-
-    
-  }
-
-  componentWillMount(){
-    let dataListing = [];
-    const items = this.state.channelsRadio.map(
-      (item, key) => <li key={item.id}>{item.name}</li>
-    );
-  }
 
   cariChannel = () => {
-    let channels1 = this.state.channelsRadio[0];
-    let audioAllSet = document.getElementById("audioAll");
-    let channelsRadioSetIn = audioAllSet.setAttribute('src', channels1);
 
-    let playNow = audioAllSet.play();
+    // let cariChannels = document.getElementById("cariChannels");
+    // let textValues = cariChannels.value;
+    // let textToLowerCase = textValues.textToLowerCase();
+
+    // let textSearch = this.state.channelsRadio.filter(todo => (todo.textToLowerCase()))
+  }
+
+  playChannel = (event) => {
+
+    const catchButton = document.getElementsByName("btnToCatch");
+    const catchAudio = document.getElementById("audio-element");
+
+    const catchButtonOnlyId = event.target.getAttribute("id");
+
+    catchAudio.play();
+
+    // if(catchButtonOnlyId == 0){
+    //   catchAudio.play();
+    // }else if (catchButtonOnlyId == 1){
+    //   console.log("say 1")
+    // }else if(catchButtonOnlyId == 2){
+    //   console.log("say 2");
+    // }else{
+    //   console.log("Music Off");
+    // }
+
+    console.log("Hear You")
+
   };
 
-  pushButtonStopPlay = () => {    
-    let ster = document.getElementById("audioAll");
-    ster.pause();
+  pushButtonStopPlay = () => {
+
   }
-      
-  
 
   render() {
 
-    
-    
     return (
       <div>
-        <AudioAll />
-        
+        <audio id="audio-element">
+          <source src="http://listento.ardanradio.com:1059/stream/1/"></source>
+        </audio>
         <Container>
           <div className="mt-5">
             <Row>
@@ -74,9 +87,9 @@ class bodyOne extends Component {
               <Col className="sm-4"></Col>
               <Col className="sm-4">
                 <Input
+                  id="cariChannels"
                   type="text"
                   placeholder="Search Here...."
-                  value={this.state}
                   onChange={this.cariChannel}
                 />
               </Col>
@@ -94,35 +107,27 @@ class bodyOne extends Component {
                   </Table.Header>
 
                   <Table.Body>
-                    
 
-{
-  this.state.channelsRadio.map(
-    (item, key) => (
-      <Table.Row>
-                      <Table.Cell>{item.name}</Table.Cell>
-                      <Table.Cell>200</Table.Cell>
-                      <Table.Cell>
-                        <Button id="btn1" value="1" onClick={this.cariChannel}>
-                          Play
-                        </Button>
-                        <Button onClick={this.pushButtonStopPlay}>Stop</Button>
-                      </Table.Cell>
-                    </Table.Row>
-    )
-  )
-}
+                    {
+                      this.state.channelsRadio.map(
+                        (item, key) => (
+                          <Table.Row className="tableHere">
 
-                    {/* <Table.Row>
-                    <Table.Cell>Elshinta FM</Table.Cell>
-                    <Table.Cell>310</Table.Cell>
-                    <Table.Cell>
-                      <Button id="btn2" value="1" onClick={this.channel1}>
-                        Play2
-                      </Button>
-                      <Button onClick={this.channelStop}>Stop</Button>
-                    </Table.Cell>
-                  </Table.Row> */}
+                            <Table.Cell>{item.name}</Table.Cell>
+                            <Table.Cell>{item.freqCha}</Table.Cell>
+                            <Table.Cell>
+
+                              <Button id={item.id} onClick={this.playChannel} name="btnToCatch">
+                                Play
+                              </Button>
+                              <Button onClick={this.pushButtonStopPlay}>Stop</Button>
+                            </Table.Cell>
+                          </Table.Row>
+                        )
+                      )
+                    }
+
+
                   </Table.Body>
                 </Table>
               </Col>
