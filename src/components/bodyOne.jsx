@@ -12,21 +12,30 @@ class bodyOne extends Component {
       channelsRadio: [
         {
           "id": 0,
-          "name": "Elshinta",
-          "freqCha": "100",
-          "src": "http://listento.ardanradio.com:1059/stream/1/"
+          "idStop": "0",
+          "name": "Bens Radio",
+          "freqCha": "106,2 FM",
+          "audioSrc": <audio id="audio-element" className="audio1">
+                        <source src="http://175.103.58.72:8000/;"></source>
+                      </audio>
         },
         {
           "id": 1,
-          "name": "Roja",
-          "freqCha": "200",
-          "src": "http://202.137.4.147:8000/;"
+          "idStop": "0",
+          "name": "Fajri Radio",
+          "freqCha": "99,3 FM",
+          "audioSrc": <audio id="audio-element2">
+                        <source src="http://coloid.fajrifm.com:9930/;"></source>
+                      </audio>
         },
         {
           "id": 2,
-          "name": "Fajri Radio",
-          "freqCha": "99,3 FM",
-          "src": "http://coloid.fajrifm.com:9930/;"
+          "idStop": "0",
+          "name": "Hard Rock FM",
+          "freqCha": "86,6 FM",
+          "audioSrc": <audio id="audio-element3">
+                        <source src="http://cloudstreaming.mramedia.com:8001/live"></source>
+                      </audio>
         }
       ]
     };
@@ -48,50 +57,40 @@ class bodyOne extends Component {
 
   playChannel = (event) => {
 
-   
+
     const catchAudio = document.getElementById("audio-element");
     const catchAudio2 = document.getElementById("audio-element2");
-
-
+    const catchAudio3 = document.getElementById("audio-element3");
     const catchButtonOnlyId = event.target.getAttribute("id");
 
-    // catchAudio.pause();
-    
-
-    if(catchButtonOnlyId == 0){
+    if (catchButtonOnlyId == 0) {
       catchAudio2.pause();
       catchAudio.play();
-    }else if (catchButtonOnlyId == 1){
+    } else if (catchButtonOnlyId == 1) {
       catchAudio.pause();
       catchAudio2.play();
-    }else if(catchButtonOnlyId == 2){
-      console.log("say 2");
-    }else{
+    } else if (catchButtonOnlyId == 2) {
+      catchAudio2.pause();
+      catchAudio3.play();
+    } else {
       console.log("Music Off");
     }
-
-   
 
   };
 
   pushButtonStopPlay = (event) => {
-   
+
     const testTake = document.getElementsByClassName("audio1")[0];
 
     console.log(testTake)
-    
+
   }
 
   render() {
 
     return (
       <div>
-        <audio id="audio-element" className="audio1">
-          <source src="http://listento.ardanradio.com:1059/stream/1/"></source>
-        </audio>
-        <audio id="audio-element2">
-          <source src="http://coloid.fajrifm.com:9930/;"></source>
-        </audio>
+        
         <Container>
           <div className="mt-5">
             <Row>
@@ -125,11 +124,11 @@ class bodyOne extends Component {
                         (item, key) => (
 
                           <Table.Row className="tableHere">
-
+                            {item.audioSrc} 
                             <Table.Cell>{item.name}</Table.Cell>
                             <Table.Cell>{item.freqCha}</Table.Cell>
                             <Table.Cell>
-                              <Button id={item.id} onClick={this.playChannel} name="btnToCatch">
+                              <Button id={item.id} onClick={this.playChannel}>
                                 Play
                               </Button>
                               <Button id="stopButton" onClick={this.pushButtonStopPlay}>Stop</Button>
@@ -138,7 +137,6 @@ class bodyOne extends Component {
                         )
                       )
                     }
-
 
                   </Table.Body>
                 </Table>
