@@ -24,7 +24,7 @@ class bodyOne extends Component {
           "idStop": "0",
           "name": "Fajri Radio",
           "freqCha": "99,3 FM",
-          "audioSrc": <audio id="audio-element2">
+          "audioSrc": <audio id="audio-element2" className="audio1">
                         <source src="http://coloid.fajrifm.com:9930/;"></source>
                       </audio>
         },
@@ -33,7 +33,7 @@ class bodyOne extends Component {
           "idStop": "0",
           "name": "Hard Rock FM",
           "freqCha": "86,6 FM",
-          "audioSrc": <audio id="audio-element3">
+          "audioSrc": <audio id="audio-element3" className="audio1">
                         <source src="http://cloudstreaming.mramedia.com:8001/live"></source>
                       </audio>
         }
@@ -58,22 +58,29 @@ class bodyOne extends Component {
   playChannel = (event) => {
 
 
-    const catchAudio = document.getElementById("audio-element");
+    const catchAudio1 = document.getElementById("audio-element");
     const catchAudio2 = document.getElementById("audio-element2");
     const catchAudio3 = document.getElementById("audio-element3");
     const catchButtonOnlyId = event.target.getAttribute("id");
+    const stopAudio = document.querySelector("audio");
+    
+
+      console.log(catchButtonOnlyId);
 
     if (catchButtonOnlyId == 0) {
+      catchAudio3.pause();
       catchAudio2.pause();
-      catchAudio.play();
+      catchAudio1.play();
     } else if (catchButtonOnlyId == 1) {
-      catchAudio.pause();
+      catchAudio3.pause();
+      catchAudio1.pause();
       catchAudio2.play();
     } else if (catchButtonOnlyId == 2) {
       catchAudio2.pause();
+      catchAudio1.pause();
       catchAudio3.play();
     } else {
-      console.log("Music Off");
+      stopAudio.pause();
     }
 
   };
@@ -131,7 +138,7 @@ class bodyOne extends Component {
                               <Button id={item.id} onClick={this.playChannel}>
                                 Play
                               </Button>
-                              <Button id="stopButton" onClick={this.pushButtonStopPlay}>Stop</Button>
+                              {/* <Button id="stopButton" onClick={this.pushButtonStopPlay}>Stop</Button> */}
                             </Table.Cell>
                           </Table.Row>
                         )
