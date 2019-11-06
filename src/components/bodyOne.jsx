@@ -3,11 +3,8 @@ import { Row, Col, Container, Input } from "reactstrap";
 import { Table, Button } from "semantic-ui-react";
 
 class bodyOne extends Component {
-
-
   constructor() {
     super();
-
     this.state = {
       channelsRadio: [
         {
@@ -45,7 +42,6 @@ class bodyOne extends Component {
     this.cariChannel = this.cariChannel.bind(this);
   }
 
-
   cariChannel = () => {
 
     // let cariChannels = document.getElementById("cariChannels");
@@ -56,16 +52,11 @@ class bodyOne extends Component {
   }
 
   playChannel = (event) => {
-
-
     const catchAudio1 = document.getElementById("audio-element");
     const catchAudio2 = document.getElementById("audio-element2");
     const catchAudio3 = document.getElementById("audio-element3");
     const catchButtonOnlyId = event.target.getAttribute("id");
     const stopAudio = document.querySelector("audio");
-    
-
-      console.log(catchButtonOnlyId);
 
     if (catchButtonOnlyId == 0) {
       catchAudio3.pause();
@@ -86,18 +77,19 @@ class bodyOne extends Component {
   };
 
   pushButtonStopPlay = (event) => {
+    const testTake1 = document.getElementsByClassName("audio1")[0];
+    const testTake2 = document.getElementsByClassName("audio1")[1];
+    const testTake3 = document.getElementsByClassName("audio1")[2];
 
-    const testTake = document.getElementsByClassName("audio1")[0];
-
-    console.log(testTake)
+    testTake1.pause();
+    testTake2.pause();
+    testTake3.pause();
 
   }
 
   render() {
-
     return (
       <div>
-        
         <Container>
           <div className="mt-5">
             <Row>
@@ -125,7 +117,6 @@ class bodyOne extends Component {
                   </Table.Header>
 
                   <Table.Body>
-
                     {
                       this.state.channelsRadio.map(
                         (item, key) => (
@@ -138,7 +129,7 @@ class bodyOne extends Component {
                               <Button id={item.id} onClick={this.playChannel}>
                                 Play
                               </Button>
-                              {/* <Button id="stopButton" onClick={this.pushButtonStopPlay}>Stop</Button> */}
+                              <Button id="stopButton" onClick={this.pushButtonStopPlay}>Stop</Button>
                             </Table.Cell>
                           </Table.Row>
                         )
