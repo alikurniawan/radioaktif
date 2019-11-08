@@ -8,84 +8,111 @@ class bodyOne extends Component {
     this.state = {
       channelsRadio: [
         {
-          "id": 0,
-          "idStop": "0",
-          "name": "Bens Radio",
-          "freqCha": "106,2 FM",
-          "audioSrc": <audio id="audio-element" className="audio1">
-                        <source src="http://175.103.58.72:8000/;"></source>
-                      </audio>
+          id: 0,
+          idStop: "0",
+          name: "Bens Radio",
+          freqCha: "106,2 FM",
+          audioSrc: (
+            <audio id="audio-element" className="audio1">
+              <source src="http://175.103.58.72:8000/;"></source>
+            </audio>
+          )
         },
         {
-          "id": 1,
-          "idStop": "0",
-          "name": "Fajri Radio",
-          "freqCha": "99,3 FM",
-          "audioSrc": <audio id="audio-element2" className="audio1">
-                        <source src="http://coloid.fajrifm.com:9930/;"></source>
-                      </audio>
+          id: 1,
+          idStop: "0",
+          name: "Fajri Radio",
+          freqCha: "99,3 FM",
+          audioSrc: (
+            <audio id="audio-element2" className="audio1">
+              <source src="http://coloid.fajrifm.com:9930/;"></source>
+            </audio>
+          )
         },
         {
-          "id": 2,
-          "idStop": "0",
-          "name": "Hard Rock FM",
-          "freqCha": "86,6 FM",
-          "audioSrc": <audio id="audio-element3" className="audio1">
-                        <source src="http://cloudstreaming.mramedia.com:8001/live"></source>
-                      </audio>
+          id: 2,
+          idStop: "0",
+          name: "Hard Rock FM",
+          freqCha: "86,6 FM",
+          audioSrc: (
+            <audio id="audio-element3" className="audio1">
+              <source src="http://cloudstreaming.mramedia.com:8001/live"></source>
+            </audio>
+          )
+        },
+        {
+          id: 3,
+          idStop: "0",
+          name: "KISI FM",
+          freqCha: "93,4 FM",
+          audioSrc: (
+            <audio id="audio-element4" className="audio1">
+              <source src="http://live.kisifm.com:9340/kisifm"></source>
+            </audio>
+          )
         }
       ]
     };
 
     this.playChannel = this.playChannel.bind(this);
     this.pushButtonStopPlay = this.pushButtonStopPlay.bind(this);
-    this.cariChannel = this.cariChannel.bind(this);
+    this.searchChannel = this.searchChannel.bind(this);
   }
 
-  cariChannel = () => {
+  searchChannel = (event) => {
+    const searchTableList = document.getElementById("tableHereId");
+    const searchValue = event.target;
+    const smallerText = searchValue.value.toLowerCase();    
 
-    // let cariChannels = document.getElementById("cariChannels");
-    // let textValues = cariChannels.value;
-    // let textToLowerCase = textValues.textToLowerCase();
+    this.setState(
+      {
+        name:"GAMBIR"
+      }
+    )
+    console.log(this.state.channelsRadio.name)
+   
+    
+  };
 
-    // let textSearch = this.state.channelsRadio.filter(todo => (todo.textToLowerCase()))
-  }
+  playChannel = event => {
+    this.catchAudio1 = document.getElementById("audio-element");
+    this.catchAudio2 = document.getElementById("audio-element2");
+    this.catchAudio3 = document.getElementById("audio-element3");
+    this.catchAudio4 = document.getElementById("audio-element4");
 
-  playChannel = (event) => {
-    const catchAudio1 = document.getElementById("audio-element");
-    const catchAudio2 = document.getElementById("audio-element2");
-    const catchAudio3 = document.getElementById("audio-element3");
+    /* Catch Button List from map ChannelsRadio --> id */
     const catchButtonOnlyId = event.target.getAttribute("id");
-    const stopAudio = document.querySelector("audio");
-
+    
     if (catchButtonOnlyId == 0) {
-      catchAudio3.pause();
-      catchAudio2.pause();
-      catchAudio1.play();
+      this.catchAudio4.pause();
+      this.catchAudio3.pause();
+      this.catchAudio2.pause();
+      this.catchAudio1.play();
     } else if (catchButtonOnlyId == 1) {
-      catchAudio3.pause();
-      catchAudio1.pause();
-      catchAudio2.play();
+      this.catchAudio4.pause();
+      this.catchAudio3.pause();
+      this.catchAudio1.pause();
+      this.catchAudio2.play();
     } else if (catchButtonOnlyId == 2) {
-      catchAudio2.pause();
-      catchAudio1.pause();
-      catchAudio3.play();
-    } else {
-      stopAudio.pause();
+      this.catchAudio4.pause();
+      this.catchAudio2.pause();
+      this.catchAudio1.pause();
+      this.catchAudio3.play();
+    } else if (catchButtonOnlyId == 3) {
+      this.catchAudio2.pause();
+      this.catchAudio1.pause();
+      this.catchAudio3.pause();
+      this.catchAudio4.play();
     }
-
   };
 
   pushButtonStopPlay = (event) => {
-    const testTake1 = document.getElementsByClassName("audio1")[0];
-    const testTake2 = document.getElementsByClassName("audio1")[1];
-    const testTake3 = document.getElementsByClassName("audio1")[2];
-
-    testTake1.pause();
-    testTake2.pause();
-    testTake3.pause();
-
-  }
+    this.catchAudio1.pause();
+    this.catchAudio2.pause();
+    this.catchAudio3.pause();
+    this.catchAudio4.pause();
+    
+  };
 
   render() {
     return (
@@ -94,13 +121,14 @@ class bodyOne extends Component {
           <div className="mt-5">
             <Row>
               <Col className="sm-4 mt-2">Ver 1.0</Col>
-              <Col className="sm-4"></Col>
+              <Col className="sm-4">{/*<Button>Mode Biasa</Button> | <Button>Mode Keren</Button>*/}</Col>
               <Col className="sm-4">
                 <Input
                   id="cariChannels"
                   type="text"
+                  // value={this.state.channelsRadio.name}
                   placeholder="Search Here...."
-                  onChange={this.cariChannel}
+                  onKeyUp={this.searchChannel}
                 />
               </Col>
             </Row>
@@ -117,25 +145,24 @@ class bodyOne extends Component {
                   </Table.Header>
 
                   <Table.Body>
-                    {
-                      this.state.channelsRadio.map(
-                        (item, key) => (
-
-                          <Table.Row className="tableHere">
-                            {item.audioSrc} 
-                            <Table.Cell>{item.name}</Table.Cell>
-                            <Table.Cell>{item.freqCha}</Table.Cell>
-                            <Table.Cell>
-                              <Button id={item.id} onClick={this.playChannel}>
-                                Play
-                              </Button>
-                              <Button id="stopButton" onClick={this.pushButtonStopPlay}>Stop</Button>
-                            </Table.Cell>
-                          </Table.Row>
-                        )
-                      )
-                    }
-
+                    {this.state.channelsRadio.map((item, key) => (
+                      <Table.Row id="tableHereId" className="tableHere">
+                        {item.audioSrc}
+                        <Table.Cell>{item.name}</Table.Cell>
+                        <Table.Cell>{item.freqCha}</Table.Cell>
+                        <Table.Cell>
+                          <Button id={item.id} onClick={this.playChannel}>
+                            Play
+                          </Button>
+                          <Button
+                            id={item.id}
+                            onClick={this.pushButtonStopPlay}
+                          >
+                            Stop
+                          </Button>
+                        </Table.Cell>
+                      </Table.Row>
+                    ))}
                   </Table.Body>
                 </Table>
               </Col>
