@@ -59,19 +59,20 @@ class bodyOne extends Component {
     this.searchChannel = this.searchChannel.bind(this);
   }
 
-  searchChannel = (event) => {
-    const searchTableList = document.getElementById("tableHereId");
-    const searchValue = event.target;
-    const smallerText = searchValue.value.toLowerCase();    
-
-    this.setState(
-      {
-        name:"GAMBIR"
+  searchChannel = () => {
+    
+    this.callTable1 = document.getElementById("tableHereId");
+    
+    this.state.channelsRadio.map(
+      (listed) => {
+        this.setState({
+          channelsRadio: [
+            this.callTable1 = `${listed.name}`
+          ]
+        })
       }
     )
-    console.log(this.state.channelsRadio.name)
-   
-    
+
   };
 
   playChannel = event => {
@@ -126,9 +127,9 @@ class bodyOne extends Component {
                 <Input
                   id="cariChannels"
                   type="text"
-                  // value={this.state.channelsRadio.name}
+                  
                   placeholder="Search Here...."
-                  onKeyUp={this.searchChannel}
+                  onChange={this.searchChannel}
                 />
               </Col>
             </Row>
