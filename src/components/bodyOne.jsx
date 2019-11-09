@@ -59,19 +59,29 @@ class bodyOne extends Component {
     this.searchChannel = this.searchChannel.bind(this);
   }
 
-  searchChannel = () => {
+  searchChannel = (e) => {
     
     this.callTable1 = document.getElementById("tableHereId");
     
-    this.state.channelsRadio.map(
-      (listed) => {
-        this.setState({
-          channelsRadio: [
-            this.callTable1 = `${listed.name}`
-          ]
-        })
-      }
+    this.searchActive = e.target
+
+    console.log(this.searchActive)
+
+    if(this.searchActive.onChange = true){
+      console.log("OK")
+    }else(
+      console.log("NO")
     )
+
+    // this.state.channelsRadio.map(
+    //   (listed) => {
+    //     this.setState({
+    //       channelsRadio: [
+    //         this.callTable1 = `${listed.name}`
+    //       ]
+    //     })
+    //   }
+    // )
 
   };
 
