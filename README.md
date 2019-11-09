@@ -1,6 +1,6 @@
 This project is bootstrappe and semantic ui style sheet maked own template.
 
-## Available Scripts
+## App Name
 
 In the project directory is Radio Local Indonesian Channels Radios.
 
