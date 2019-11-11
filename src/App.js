@@ -7,12 +7,12 @@ import "./App.css";
 function App() {
   return (
     <div className="bodyH">
-      <div>
+      
         <Header />
         <br />
         <br />
         <BodyOne />
-      </div>
+      
     </div>
   );
 }

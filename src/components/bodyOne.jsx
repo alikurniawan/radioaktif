@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
-import { Table, Button } from "semantic-ui-react";
+import { Table, Button, Card, Image, Icon } from "semantic-ui-react";
+
+import ImageBens from "./imagesInside/bens.png";
+import ImageFajri from "./imagesInside/fajri.png";
+import ImageHardrock from "./imagesInside/hardrock.png";
+import ImageKisi from "./imagesInside/kisi.png";
 
 class bodyOne extends Component {
   constructor() {
@@ -10,10 +15,11 @@ class bodyOne extends Component {
         {
           id: 0,
           idStop: "0",
+          img: ImageBens,
           name: "Bens Radio",
           freqCha: "106,2 FM",
           audioSrc: (
-            <audio id="audio-element" className="audio1">
+            <audio id="audio-element1" className="audio1">
               <source src="http://175.103.58.72:8000/;"></source>
             </audio>
           )
@@ -21,6 +27,7 @@ class bodyOne extends Component {
         {
           id: 1,
           idStop: "0",
+          img: ImageFajri,
           name: "Fajri Radio",
           freqCha: "99,3 FM",
           audioSrc: (
@@ -32,6 +39,7 @@ class bodyOne extends Component {
         {
           id: 2,
           idStop: "0",
+          img: ImageHardrock,
           name: "Hard Rock FM",
           freqCha: "86,6 FM",
           audioSrc: (
@@ -43,11 +51,36 @@ class bodyOne extends Component {
         {
           id: 3,
           idStop: "0",
+          img: ImageKisi,
           name: "KISI FM",
           freqCha: "93,4 FM",
           audioSrc: (
             <audio id="audio-element4" className="audio1">
               <source src="http://live.kisifm.com:9340/kisifm"></source>
+            </audio>
+          )
+        },
+        {
+          id: 4,
+          idStop: "0",
+          img: "https://react.semantic-ui.com/images/avatar/large/daniel.jpg",
+          name: "XX FM",
+          freqCha: "93,4 FM",
+          audioSrc: (
+            <audio id="audio-element5" className="audio1">
+              <source src=""></source>
+            </audio>
+          )
+        },
+        {
+          id: 5,
+          idStop: "0",
+          img: "https://react.semantic-ui.com/images/avatar/large/daniel.jpg",
+          name: "XXi FM",
+          freqCha: "93,4 FM",
+          audioSrc: (
+            <audio id="audio-element6" className="audio1">
+              <source src=""></source>
             </audio>
           )
         }
@@ -59,19 +92,16 @@ class bodyOne extends Component {
     this.searchChannel = this.searchChannel.bind(this);
   }
 
-  searchChannel = (e) => {
-    
+  searchChannel = e => {
     this.callTable1 = document.getElementById("tableHereId");
-    
-    this.searchActive = e.target
 
-    console.log(this.searchActive)
+    this.searchActive = e.target;
 
-    if(this.searchActive.onChange = true){
-      console.log("OK")
-    }else(
-      console.log("NO")
-    )
+    console.log(this.searchActive);
+
+    if ((this.searchActive.onChange = true)) {
+      console.log("OK");
+    } else console.log("NO");
 
     // this.state.channelsRadio.map(
     //   (listed) => {
@@ -82,47 +112,71 @@ class bodyOne extends Component {
     //     })
     //   }
     // )
-
   };
 
   playChannel = event => {
-    this.catchAudio1 = document.getElementById("audio-element");
+    this.catchAudio1 = document.getElementById("audio-element1");
     this.catchAudio2 = document.getElementById("audio-element2");
     this.catchAudio3 = document.getElementById("audio-element3");
     this.catchAudio4 = document.getElementById("audio-element4");
+    this.catchAudio5 = document.getElementById("audio-element5");
+    this.catchAudio6 = document.getElementById("audio-element6");
 
     /* Catch Button List from map ChannelsRadio --> id */
     const catchButtonOnlyId = event.target.getAttribute("id");
-    
+
     if (catchButtonOnlyId == 0) {
+      this.catchAudio6.pause();
+      this.catchAudio5.pause();
       this.catchAudio4.pause();
       this.catchAudio3.pause();
       this.catchAudio2.pause();
       this.catchAudio1.play();
     } else if (catchButtonOnlyId == 1) {
+      this.catchAudio6.pause();
+      this.catchAudio5.pause();
       this.catchAudio4.pause();
       this.catchAudio3.pause();
       this.catchAudio1.pause();
       this.catchAudio2.play();
     } else if (catchButtonOnlyId == 2) {
+      this.catchAudio6.pause();
+      this.catchAudio5.pause();
       this.catchAudio4.pause();
       this.catchAudio2.pause();
       this.catchAudio1.pause();
       this.catchAudio3.play();
     } else if (catchButtonOnlyId == 3) {
+      this.catchAudio6.pause();
+      this.catchAudio5.pause();
       this.catchAudio2.pause();
       this.catchAudio1.pause();
       this.catchAudio3.pause();
       this.catchAudio4.play();
+    } else if (catchButtonOnlyId == 4) {
+      this.catchAudio6.pause();
+      this.catchAudio4.pause();
+      this.catchAudio3.pause();
+      this.catchAudio2.pause();
+      this.catchAudio1.pause();
+      this.catchAudio5.play();
+    } else if (catchButtonOnlyId == 5) {
+      this.catchAudio5.pause();
+      this.catchAudio4.pause();
+      this.catchAudio3.pause();
+      this.catchAudio2.pause();
+      this.catchAudio1.pause();
+      this.catchAudio6.play();
     }
   };
 
-  pushButtonStopPlay = (event) => {
+  pushButtonStopPlay = event => {
     this.catchAudio1.pause();
     this.catchAudio2.pause();
     this.catchAudio3.pause();
     this.catchAudio4.pause();
-    
+    this.catchAudio5.pause();
+    this.catchAudio6.pause();
   };
 
   render() {
@@ -132,21 +186,54 @@ class bodyOne extends Component {
           <div className="mt-5">
             <Row>
               <Col className="sm-4 mt-2">Ver 1.0</Col>
-              <Col className="sm-4">{/*<Button>Mode Biasa</Button> | <Button>Mode Keren</Button>*/}</Col>
+              <Col className="sm-4">
+                {/*<Button>Mode Biasa</Button> | <Button>Mode Keren</Button>*/}
+              </Col>
               <Col className="sm-4">
                 <Input
                   id="cariChannels"
                   type="text"
-                  
                   placeholder="Search Here...."
                   onChange={this.searchChannel}
                 />
               </Col>
             </Row>
+          </div>
+        </Container>
+        <Row className="ml-2 mr-2">
+          <Col>
+            <br />
+            <Card.Group itemsPerRow={5} wrapped>
+              {this.state.channelsRadio.map((item, key) => (
+                <Card>
+                  <Image src={item.img} wrapped ui={false} />
+                  <Card.Content>
+                    <Card.Header>{item.name}</Card.Header>
+                    <Card.Meta>
+                      <span className="date">{item.freqCha}</span>
+                    </Card.Meta>
+                    <Card.Description>
+                      <Button id={item.id} onClick={this.playChannel}>
+                        Play
+                      </Button>
+                      <Button
+                        id={item.id}
+                        onClick={this.pushButtonStopPlay}
+                      >Stop</Button>
+                    </Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <a>
+                      <Icon name="user" />
+                      22 Friends
+                    </a>
+                  </Card.Content>
+                </Card>
+              ))}
+            </Card.Group>
+            {/* PAGAR PEMBATAS =======================================================================================================*/}
 
-            <Row>
-              <Col>
-                <Table className="mt-4" color="yellow" inverted>
+            {/* <Table className="mt-4" color="yellow" inverted>
                   <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell>Name</Table.HeaderCell>
@@ -175,11 +262,10 @@ class bodyOne extends Component {
                       </Table.Row>
                     ))}
                   </Table.Body>
-                </Table>
-              </Col>
-            </Row>
-          </div>
-        </Container>
+                </Table> */}
+            {/* PAGAR PEMBATAS =======================================================================================================*/}
+          </Col>
+        </Row>
       </div>
     );
   }
