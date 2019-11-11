@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
 import { Table, Button, Card, Image, Icon } from "semantic-ui-react";
+import '../css/fotoStyle.css'
 
 import ImageBens from "./imagesInside/bens.png";
 import ImageFajri from "./imagesInside/fajri.png";
 import ImageHardrock from "./imagesInside/hardrock.png";
 import ImageKisi from "./imagesInside/kisi.png";
+import ImageMustang from "./imagesInside/mustang.png";
 
 class bodyOne extends Component {
   constructor() {
@@ -63,12 +65,12 @@ class bodyOne extends Component {
         {
           id: 4,
           idStop: "0",
-          img: "https://react.semantic-ui.com/images/avatar/large/daniel.jpg",
-          name: "XX FM",
-          freqCha: "93,4 FM",
+          img: ImageMustang,
+          name: "Mustang FM",
+          freqCha: "88,0 FM",
           audioSrc: (
             <audio id="audio-element5" className="audio1">
-              <source src=""></source>
+              <source src="http://103.246.184.34:8000/mustang"></source>
             </audio>
           )
         },
@@ -76,11 +78,11 @@ class bodyOne extends Component {
           id: 5,
           idStop: "0",
           img: "https://react.semantic-ui.com/images/avatar/large/daniel.jpg",
-          name: "XXi FM",
+          name: "RAS FM",
           freqCha: "93,4 FM",
           audioSrc: (
             <audio id="audio-element6" className="audio1">
-              <source src=""></source>
+              <source src="http://103.28.148.18:9006/;"></source>
             </audio>
           )
         }
@@ -103,15 +105,7 @@ class bodyOne extends Component {
       console.log("OK");
     } else console.log("NO");
 
-    // this.state.channelsRadio.map(
-    //   (listed) => {
-    //     this.setState({
-    //       channelsRadio: [
-    //         this.callTable1 = `${listed.name}`
-    //       ]
-    //     })
-    //   }
-    // )
+   
   };
 
   playChannel = event => {
@@ -121,7 +115,7 @@ class bodyOne extends Component {
     this.catchAudio4 = document.getElementById("audio-element4");
     this.catchAudio5 = document.getElementById("audio-element5");
     this.catchAudio6 = document.getElementById("audio-element6");
-
+console.log(event.target)
     /* Catch Button List from map ChannelsRadio --> id */
     const catchButtonOnlyId = event.target.getAttribute("id");
 
@@ -200,12 +194,13 @@ class bodyOne extends Component {
             </Row>
           </div>
         </Container>
-        <Row className="ml-2 mr-2">
+        <Row className="ml-2 mr-2 mb-2">
           <Col>
             <br />
-            <Card.Group itemsPerRow={5} wrapped>
+            <Card.Group className="fotoLists" >
               {this.state.channelsRadio.map((item, key) => (
                 <Card>
+                  {item.audioSrc}
                   <Image src={item.img} wrapped ui={false} />
                   <Card.Content>
                     <Card.Header>{item.name}</Card.Header>
@@ -231,39 +226,6 @@ class bodyOne extends Component {
                 </Card>
               ))}
             </Card.Group>
-            {/* PAGAR PEMBATAS =======================================================================================================*/}
-
-            {/* <Table className="mt-4" color="yellow" inverted>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>Name</Table.HeaderCell>
-                      <Table.HeaderCell>Freq</Table.HeaderCell>
-                      <Table.HeaderCell>Play</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-
-                  <Table.Body>
-                    {this.state.channelsRadio.map((item, key) => (
-                      <Table.Row id="tableHereId" className="tableHere">
-                        {item.audioSrc}
-                        <Table.Cell>{item.name}</Table.Cell>
-                        <Table.Cell>{item.freqCha}</Table.Cell>
-                        <Table.Cell>
-                          <Button id={item.id} onClick={this.playChannel}>
-                            Play
-                          </Button>
-                          <Button
-                            id={item.id}
-                            onClick={this.pushButtonStopPlay}
-                          >
-                            Stop
-                          </Button>
-                        </Table.Cell>
-                      </Table.Row>
-                    ))}
-                  </Table.Body>
-                </Table> */}
-            {/* PAGAR PEMBATAS =======================================================================================================*/}
           </Col>
         </Row>
       </div>

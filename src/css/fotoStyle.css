@@ -1,0 +1,8 @@
+.fotoLists{
+    display: flex;
+    justify-content: space-evenly;
+}
+.rootLists{
+    display: flex;
+    justify-content: space-evenly;
+}
