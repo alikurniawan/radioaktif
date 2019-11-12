@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
-import { Table, Button, Card, Image, Icon } from "semantic-ui-react";
+import { Table, Button, Card, Image, Icon, Progress, Segment } from "semantic-ui-react";
 import '../css/fotoStyle.css'
 
 import ImageBens from "./imagesInside/bens.png";
@@ -16,6 +16,7 @@ class bodyOne extends Component {
       channelsRadio: [
         {
           id: 0,
+          progressBar: 0,
           idStop: "0",
           img: ImageBens,
           name: "Bens Radio",
@@ -28,6 +29,7 @@ class bodyOne extends Component {
         },
         {
           id: 1,
+          progressBar: 0,
           idStop: "0",
           img: ImageFajri,
           name: "Fajri Radio",
@@ -40,6 +42,7 @@ class bodyOne extends Component {
         },
         {
           id: 2,
+          progressBar: 0,
           idStop: "0",
           img: ImageHardrock,
           name: "Hard Rock FM",
@@ -52,6 +55,7 @@ class bodyOne extends Component {
         },
         {
           id: 3,
+          progressBar: 0,
           idStop: "0",
           img: ImageKisi,
           name: "KISI FM",
@@ -64,6 +68,7 @@ class bodyOne extends Component {
         },
         {
           id: 4,
+          progressBar: 0,
           idStop: "0",
           img: ImageMustang,
           name: "Mustang FM",
@@ -76,6 +81,7 @@ class bodyOne extends Component {
         },
         {
           id: 5,
+          progressBar: 0,
           idStop: "0",
           img: "https://react.semantic-ui.com/images/avatar/large/daniel.jpg",
           name: "RAS FM",
@@ -116,10 +122,17 @@ class bodyOne extends Component {
     this.catchAudio5 = document.getElementById("audio-element5");
     this.catchAudio6 = document.getElementById("audio-element6");
 
+    this.progressBar1 = document.getElementById("progressBar1");
+
+    
+
+    this.progressBar1.setAttribute("color", "green");
+    console.log(this.progressBar1)
     /* Catch Button List from map ChannelsRadio --> id */
     const catchButtonOnlyId = event.target.getAttribute("id");
 
     if (catchButtonOnlyId == 0) {
+      
       this.catchAudio6.pause();
       this.catchAudio5.pause();
       this.catchAudio4.pause();
@@ -171,6 +184,10 @@ class bodyOne extends Component {
     this.catchAudio4.pause();
     this.catchAudio5.pause();
     this.catchAudio6.pause();
+
+    this.setState({
+      progressBar:0
+    })
   };
 
   render() {
@@ -206,6 +223,8 @@ class bodyOne extends Component {
                     <Card.Header>{item.name}</Card.Header>
                     <Card.Meta>
                       <span className="date">{item.freqCha}</span>
+                      <br/>
+                      <span><Progress id="progressBar1" percent={this.state.channelsRadio.progressBar} /></span>
                     </Card.Meta>
                     <Card.Description>
                       <Button id={item.id} onClick={this.playChannel}>
