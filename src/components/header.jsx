@@ -4,11 +4,7 @@ import "../css/header.css";
 import LogoRadio from "../images/radioaktif.png";
 
 class header extends Component {
-  
-
-  
   render() {
-    
     return (
       <div>
         <Container>
@@ -17,8 +13,7 @@ class header extends Component {
               <img alt="" className="LogoRadio" src={LogoRadio} />
             </Col>
             <Col></Col>
-            <Col>
-            </Col>
+            <Col></Col>
           </Row>
         </Container>
       </div>

@@ -115,7 +115,7 @@ class bodyOne extends Component {
     this.catchAudio4 = document.getElementById("audio-element4");
     this.catchAudio5 = document.getElementById("audio-element5");
     this.catchAudio6 = document.getElementById("audio-element6");
-console.log(event.target)
+
     /* Catch Button List from map ChannelsRadio --> id */
     const catchButtonOnlyId = event.target.getAttribute("id");
 
