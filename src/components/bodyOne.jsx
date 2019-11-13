@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
 import { Table, Button, Card, Image, Icon, Progress, Segment } from "semantic-ui-react";
-import '../css/fotoStyle.css'
+import '../css/fotoStyle.css';
+import '../css/animated.css';
 
 import ImageBens from "./imagesInside/bens.png";
 import ImageFajri from "./imagesInside/fajri.png";
@@ -237,7 +238,7 @@ class bodyOne extends Component {
         <Container>
           <div className="mt-5">
             <Row>
-              <Col className="sm-4 mt-2">Ver 1.0</Col>
+              <Col className="sm-4 mt-2">Ver 1.10</Col>
               <Col className="sm-4">
                 {/*<Button>Mode Biasa</Button> | <Button>Mode Keren</Button>*/}
               </Col>
@@ -257,7 +258,7 @@ class bodyOne extends Component {
             <br />
             <Card.Group className="fotoLists" >
               {this.state.channelsRadio.map((item, key) => (
-                <Card>
+                <Card className="hoverNext animated zoomInUp">
                   {item.audioSrc}
                   <Image src={item.img} wrapped ui={false} />
                   <Card.Content>
