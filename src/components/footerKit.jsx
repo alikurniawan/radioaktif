@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Jumbotron } from "reactstrap";
-import { Card } from "semantic-ui-react";
+import { Table, Header } from "reactstrap";
 import "../css/fotoStyle.css";
 import ImageFooter from "./imagesInside/radioaktiffooter.png";
 
@@ -9,16 +8,24 @@ class footerKit extends Component {
   render() {
     return (
       <div>
-        <Jumbotron>
-          <div className="rootLists">
-            <div>
-              <Card image={ImageFooter} />
-            </div>
-            <div>
-              <p>sdsdsddwdslfje ueposepoj</p>
-            </div>
-          </div>
-        </Jumbotron>
+        <Table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Radio Aktif</th>
+          <th>Ver 1.10</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>Powered By. Alikurniawan</th>
+        </tr>
+      </thead>
+      </Table>
       </div>
     );
   }

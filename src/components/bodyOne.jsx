@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Input } from "reactstrap";
-import { Table, Button, Card, Image, Icon, Progress, Segment } from "semantic-ui-react";
-import '../css/fotoStyle.css';
-import '../css/animated.css';
+import {
+  Table,
+  Button,
+  Card,
+  Image,
+  Icon,
+  Progress,
+  Segment
+} from "semantic-ui-react";
+import "../css/fotoStyle.css";
+import "../css/animated.css";
 
 import ImageBens from "./imagesInside/bens.png";
 import ImageFajri from "./imagesInside/fajri.png";
@@ -14,6 +22,7 @@ class bodyOne extends Component {
   constructor() {
     super();
     this.state = {
+      value: '',
       channelsRadio: [
         {
           id: 0,
@@ -105,9 +114,6 @@ class bodyOne extends Component {
     this.callCariChannels = document.getElementById("cariChannels");
     this.callCariChannelsValue = this.callCariChannels.value;
     this.cariLowLetter = this.callCariChannelsValue.toLowerCase();
-
-   
-
   };
 
   playChannel = event => {
@@ -118,16 +124,15 @@ class bodyOne extends Component {
     this.catchAudio5 = document.getElementById("audio-element5");
     this.catchAudio6 = document.getElementById("audio-element6");
 
-    this.progressBar1 = document.getElementById("progressBar1");   
+    this.progressBar1 = document.getElementById("progressBar1");
 
     /* Catch Button List from map ChannelsRadio --> id */
     const catchButtonOnlyId = event.target.getAttribute("id");
 
     if (catchButtonOnlyId == 0) {
-
-      let bar100 = this.state.channelsRadio
-      bar100[0].progressBar = 100
-      this.setState(bar100)
+      let bar100 = this.state.channelsRadio;
+      bar100[0].progressBar = 100;
+      this.setState(bar100);
 
       this.catchAudio6.pause();
       this.catchAudio5.pause();
@@ -136,10 +141,9 @@ class bodyOne extends Component {
       this.catchAudio2.pause();
       this.catchAudio1.play();
     } else if (catchButtonOnlyId == 1) {
-
-      let bar101 = this.state.channelsRadio
-      bar101[1].progressBar = 100
-      this.setState(bar101)
+      let bar101 = this.state.channelsRadio;
+      bar101[1].progressBar = 100;
+      this.setState(bar101);
 
       this.catchAudio6.pause();
       this.catchAudio5.pause();
@@ -148,10 +152,9 @@ class bodyOne extends Component {
       this.catchAudio1.pause();
       this.catchAudio2.play();
     } else if (catchButtonOnlyId == 2) {
-
-      let bar102 = this.state.channelsRadio
-      bar102[2].progressBar = 100
-      this.setState(bar102)
+      let bar102 = this.state.channelsRadio;
+      bar102[2].progressBar = 100;
+      this.setState(bar102);
 
       this.catchAudio6.pause();
       this.catchAudio5.pause();
@@ -160,10 +163,9 @@ class bodyOne extends Component {
       this.catchAudio1.pause();
       this.catchAudio3.play();
     } else if (catchButtonOnlyId == 3) {
-
-      let bar103 = this.state.channelsRadio
-      bar103[3].progressBar = 100
-      this.setState(bar103)
+      let bar103 = this.state.channelsRadio;
+      bar103[3].progressBar = 100;
+      this.setState(bar103);
 
       this.catchAudio6.pause();
       this.catchAudio5.pause();
@@ -172,10 +174,9 @@ class bodyOne extends Component {
       this.catchAudio3.pause();
       this.catchAudio4.play();
     } else if (catchButtonOnlyId == 4) {
-
-      let bar104 = this.state.channelsRadio
-      bar104[4].progressBar = 100
-      this.setState(bar104)
+      let bar104 = this.state.channelsRadio;
+      bar104[4].progressBar = 100;
+      this.setState(bar104);
 
       this.catchAudio6.pause();
       this.catchAudio4.pause();
@@ -184,10 +185,9 @@ class bodyOne extends Component {
       this.catchAudio1.pause();
       this.catchAudio5.play();
     } else if (catchButtonOnlyId == 5) {
-
-      let bar105 = this.state.channelsRadio
-      bar105[5].progressBar = 100
-      this.setState(bar105)
+      let bar105 = this.state.channelsRadio;
+      bar105[5].progressBar = 100;
+      this.setState(bar105);
 
       this.catchAudio5.pause();
       this.catchAudio4.pause();
@@ -207,29 +207,28 @@ class bodyOne extends Component {
     this.catchAudio6.pause();
 
     let bar0 = this.state.channelsRadio;
-    bar0[0].progressBar = 0
-    this.setState(bar0)
+    bar0[0].progressBar = 0;
+    this.setState(bar0);
 
     let bar1 = this.state.channelsRadio;
-    bar0[1].progressBar = 0
-    this.setState(bar1)
-    
+    bar0[1].progressBar = 0;
+    this.setState(bar1);
+
     let bar2 = this.state.channelsRadio;
-    bar0[2].progressBar = 0
-    this.setState(bar2)
+    bar0[2].progressBar = 0;
+    this.setState(bar2);
 
     let bar3 = this.state.channelsRadio;
-    bar0[3].progressBar = 0
-    this.setState(bar3)
+    bar0[3].progressBar = 0;
+    this.setState(bar3);
 
     let bar4 = this.state.channelsRadio;
-    bar0[4].progressBar = 0
-    this.setState(bar4)
+    bar0[4].progressBar = 0;
+    this.setState(bar4);
 
     let bar5 = this.state.channelsRadio;
-    bar0[5].progressBar = 0
-    this.setState(bar5)
-
+    bar0[5].progressBar = 0;
+    this.setState(bar5);
   };
 
   render() {
@@ -245,6 +244,7 @@ class bodyOne extends Component {
               <Col className="sm-4">
                 <Input
                   id="cariChannels"
+                  value={this.state.value}
                   type="text"
                   placeholder="Search Here...."
                   onChange={this.searchChannel}
@@ -256,7 +256,7 @@ class bodyOne extends Component {
         <Row className="ml-2 mr-2 mb-2">
           <Col>
             <br />
-            <Card.Group className="fotoLists" >
+            <Card.Group className="fotoLists">
               {this.state.channelsRadio.map((item, key) => (
                 <Card className="hoverNext animated zoomInUp">
                   {item.audioSrc}
@@ -265,17 +265,22 @@ class bodyOne extends Component {
                     <Card.Header>{item.name}</Card.Header>
                     <Card.Meta>
                       <span className="date">{item.freqCha}</span>
-                      <br/>
-                      <span><Progress id="progressBar1" percent={item.progressBar} color="" /></span>
+                      <br />
+                      <span>
+                        <Progress
+                          id="progressBar1"
+                          percent={item.progressBar}
+                          color=""
+                        />
+                      </span>
                     </Card.Meta>
                     <Card.Description>
                       <Button id={item.id} onClick={this.playChannel}>
                         Play
                       </Button>
-                      <Button
-                        id={item.id}
-                        onClick={this.pushButtonStopPlay}
-                      >Stop</Button>
+                      <Button id={item.id} onClick={this.pushButtonStopPlay}>
+                        Stop
+                      </Button>
                     </Card.Description>
                   </Card.Content>
                   <Card.Content extra>
